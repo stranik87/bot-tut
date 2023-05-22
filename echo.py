@@ -31,12 +31,11 @@ def main():
 
             elif 'sticker' in current_update['message']:
                 sticker_id = current_update['message']['sticker']['file_id']
-                print(sticker_id)
                 send_sticker(chat_id=chat_id, sticker=sticker_id)
                 
 
             last_update_id = current_update_id
 
-            time.sleep(2)
+        time.sleep(1)
 
 main()
