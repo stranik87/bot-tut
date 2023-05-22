@@ -22,6 +22,15 @@ def send_text(chat_id, text='salom, botimiga hush kelibsiz!'):
     requests.get(url, params=payload)
 
 
+def send_photo(chat_id, photo_id):
+    url = f'{URL}/sendPhoto'
+    data = {
+        'chat_id': '1258594598',
+        'photo': photo_id
+    }
+    requests.get(url=url, params=data)
+
+
 last_update = get_last_udpate()
 last_update_id = last_update['update_id']
 
@@ -30,15 +39,19 @@ while True:
     current_update_id = current_update['update_id']
 
     if last_update_id != current_update_id:
+        chat_id = current_update['message']['chat']['id']
+
         if 'text' in current_update['message']:
             text    = current_update['message']['text']
-            chat_id = current_update['message']['chat']['id']
             if text == '/start':
                 send_text(chat_id=chat_id)
             else:
                 send_text(chat_id=chat_id, text=text)
-                
-            print(current_update_id, chat_id, text)
+
+        elif 'photo' in current_update['message']:
+            photo_id = current_update['message']['photo'][0]['file_id']
+            send_photo(chat_id=chat_id, photo_id=photo_id)
+            
 
         last_update_id = current_update_id
 
