@@ -1,6 +1,6 @@
 import requests 
 
-TOKEN = '5652662088:AAFK7CrDuSOV6UJw4W3GpRT9DVKBB3iEpJQ'
+TOKEN = '5812761004:AAHywnOPZkW-v5BhTtncFXo5LgO5RnvXMck'
 
 url = f'https://api.telegram.org/bot{TOKEN}/sendPhoto'
 
