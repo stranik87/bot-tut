@@ -7,6 +7,9 @@ from handlers import (
     send_video,
     send_audio,
     send_document,
+    send_voice,
+    send_location,
+    send_contact,
 )
 
 
@@ -49,6 +52,22 @@ def main():
             elif 'document' in current_update['message']:
                 document_id = current_update['message']['document']['file_id']
                 send_document(chat_id=chat_id,document=document_id)
+                
+            elif 'voice' in current_update['message']:
+                voice_id = current_update['message']['voice']['file_id']
+                send_voice(chat_id=chat_id,voice=voice_id)
+                
+            elif 'location' in current_update['message']:
+                latitude_id = current_update['message']['location']['latitude']
+                longitude_id = current_update['message']['location']['longitude']
+                send_location(chat_id=chat_id,latitude=latitude_id,longitude=longitude_id)
+                
+            elif 'contact' in current_update['message']:
+                
+                phone_number = current_update['message']['contact']['phone_number']
+                first_name = current_update['message']['contact']['first_name']
+                send_contact(chat_id=chat_id,phone_number=phone_number,first_name=first_name)
+                
 
             last_update_id = current_update_id
 

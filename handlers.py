@@ -62,3 +62,29 @@ def send_document(chat_id,document):
         'document':document
     }
     requests.get(url=url,params=data)
+    
+def send_voice(chat_id,voice):
+    url = f'{URL}/sendVoice'
+    data = {
+        'chat_id':chat_id,
+        'voice':voice
+    }
+    requests.get(url=url,params=data)
+    
+def send_location(chat_id,latitude,longitude):
+    url = f'{URL}/sendLocation'
+    data = {
+        'chat_id':chat_id,
+        'latitude':latitude,
+        'longitude':longitude
+    }
+    requests.get(url=url,params=data)
+    
+def send_contact(chat_id,phone_number,first_name):
+    url = f'{URL}/sendContact'
+    data = {
+        'chat_id':chat_id,
+        'phone_number':phone_number,
+        'first_name':first_name
+    }
+    requests.get(url=url,params=data)
