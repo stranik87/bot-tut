@@ -88,3 +88,10 @@ def send_contact(chat_id,phone_number,first_name):
         'first_name':first_name
     }
     requests.get(url=url,params=data)
+    
+def send_dice(chat_id,emoji=''):
+    url = f'{URL}/sendDice'
+    data = {
+        'chat_id':chat_id,
+        
+    }

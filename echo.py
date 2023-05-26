@@ -10,6 +10,7 @@ from handlers import (
     send_voice,
     send_location,
     send_contact,
+    send_dice,
 )
 
 
@@ -68,6 +69,9 @@ def main():
                 first_name = current_update['message']['contact']['first_name']
                 send_contact(chat_id=chat_id,phone_number=phone_number,first_name=first_name)
                 
+            elif 'emoji' in current_update['message']:
+                emoji = current_update['message']['emoji']
+                send_dice(chat_id=chat_id,emoji=emoji)
 
             last_update_id = current_update_id
 
